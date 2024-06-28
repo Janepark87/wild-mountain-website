@@ -1,6 +1,6 @@
-import { Header } from '@/src/components';
 import { josefin } from '@/src/styles/fonts';
 import '@/src/styles/globals.css';
+import { Header } from '@/src/components';
 
 export const metadata = {
 	title: {
@@ -15,12 +15,12 @@ export default function RootLayout({ children }) {
 	return (
 		<html suppressHydrationWarning lang="en">
 			<body
-				className={`${josefin} text-primary-100 bg-primary-950 min-h-screen`}>
+				className={`${josefin} text-primary-100 bg-primary-950 flex min-h-screen flex-col antialiased`}>
 				<Header />
 
-				<main>{children}</main>
-
-				<footer>Copyright by Wild Mountain.</footer>
+				<main className="flex-1 px-6 py-12">
+					<div className="mx-auto max-w-7xl">{children}</div>
+				</main>
 			</body>
 		</html>
 	);

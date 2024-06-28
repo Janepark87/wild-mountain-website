@@ -7,11 +7,10 @@ export default function Logo() {
 		<Link href="/" className="flex h-16 w-16 flex-col items-center gap-1">
 			<Image
 				src={images.logoLight}
-				height="auto"
-				width="auto"
-				alt="Wild Mountain logo"
+				quality={100}
 				priority
 				className="w-full object-cover"
+				alt="Wild Mountain logo"
 			/>
 			<span className="text-primary-100 text-xs uppercase">
 				Wild Mountain
