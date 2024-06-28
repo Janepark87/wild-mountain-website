@@ -15,11 +15,11 @@ export default function RootLayout({ children }) {
 	return (
 		<html suppressHydrationWarning lang="en">
 			<body
-				className={`${josefin} text-primary-100 bg-primary-950 flex min-h-screen flex-col antialiased`}>
+				className={`${josefin} text-primary-100 bg-primary-950 relative flex min-h-screen flex-col antialiased`}>
 				<Header />
 
-				<main className="flex-1 px-6 py-12">
-					<div className="mx-auto max-w-7xl">{children}</div>
+				<main className="flex-1 overflow-x-hidden px-6 py-12">
+					<div className="mx-auto mt-24 max-w-7xl">{children}</div>
 				</main>
 			</body>
 		</html>

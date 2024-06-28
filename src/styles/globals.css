@@ -19,6 +19,14 @@
 }
 
 @layer components {
+	.btn-primary {
+		@apply bg-accent-500 text-primary-800 hover:bg-accent-600 inline-block rounded-lg border-none p-5 text-lg font-semibold leading-tight outline-none transition-all sm:px-8;
+	}
+
+	.full-screen {
+		@apply absolute bottom-0 left-0 right-0 top-0 h-full w-full text-transparent;
+	}
+
 	.spinner {
 		margin: 3.2rem auto 1.6rem;
 		width: 60px;
