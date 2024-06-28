@@ -18,8 +18,8 @@ export default function RootLayout({ children }) {
 				className={`${josefin} text-primary-100 bg-primary-950 relative flex min-h-screen flex-col antialiased`}>
 				<Header />
 
-				<main className="flex-1 overflow-x-hidden px-6 py-12">
-					<div className="mx-auto max-w-7xl">{children}</div>
+				<main className="grid flex-1 overflow-x-hidden px-6 py-12">
+					<div className="mx-auto w-full max-w-7xl">{children}</div>
 				</main>
 			</body>
 		</html>
