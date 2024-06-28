@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
 				<Header />
 
 				<main className="flex-1 overflow-x-hidden px-6 py-12">
-					<div className="mx-auto mt-24 max-w-7xl">{children}</div>
+					<div className="mx-auto max-w-7xl">{children}</div>
 				</main>
 			</body>
 		</html>

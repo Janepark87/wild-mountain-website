@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+import defaultTheme from 'tailwindcss/defaultTheme';
 
 module.exports = {
 	content: [
@@ -8,6 +9,14 @@ module.exports = {
 		'./src/**/*.{js,ts,jsx,tsx,mdx}',
 	],
 	theme: {
+		screens: {
+			xxs: '376px',
+			xs: '576px',
+			...defaultTheme.screens,
+			'mq-sm': {
+				raw: '(min-width: 768px) and (max-height: 960px)',
+			},
+		},
 		extend: {
 			colors: {
 				primary: {
