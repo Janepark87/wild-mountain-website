@@ -1,5 +1,10 @@
+import { supabase } from './supabase';
+
 export async function getSettings() {
-	const { data, error } = await supabase.from('settings').select('*').single();
+	const { data, error } = await supabase
+		.from('settings')
+		.select('*')
+		.single();
 
 	if (error) {
 		console.error(error);
@@ -11,7 +16,9 @@ export async function getSettings() {
 
 export async function getCountries() {
 	try {
-		const res = await fetch('https://restcountries.com/v2/all?fields=name,flag');
+		const res = await fetch(
+			'https://restcountries.com/v2/all?fields=name,flag'
+		);
 		const countries = await res.json();
 		return countries;
 	} catch {
