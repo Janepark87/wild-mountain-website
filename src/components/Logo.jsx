@@ -19,6 +19,7 @@ export default function Logo() {
 			<Image
 				src={images.logoLightMobile}
 				quality={100}
+				priority
 				className="w-12 min-w-10 object-cover sm:hidden"
 				alt="Wild Mountain logo"
 			/>
