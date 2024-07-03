@@ -1,4 +1,5 @@
 import { supabase } from './supabase';
+import { notFound } from 'next/navigation';
 
 export const getCabins = async function () {
 	const { data, error } = await supabase
@@ -23,7 +24,7 @@ export async function getCabin(id) {
 
 	if (error) {
 		console.error(error);
-		throw new Error('Cabin could not be loaded');
+		notFound();
 	}
 
 	return data;
