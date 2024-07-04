@@ -37,4 +37,23 @@ const sideNavLinks = [
 	},
 ];
 
-export default { headerNavLinks, sideNavLinks };
+const cabinFilterList = [
+	{
+		name: 'All cabins',
+		category: 'all',
+	},
+	{
+		name: '1-3 guests',
+		category: 'small',
+	},
+	{
+		name: '4-7 guests',
+		category: 'medium',
+	},
+	{
+		name: '8-12 guests',
+		category: 'large',
+	},
+];
+
+export default { headerNavLinks, sideNavLinks, cabinFilterList };
