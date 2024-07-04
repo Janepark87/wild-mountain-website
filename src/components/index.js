@@ -9,6 +9,14 @@ export { default as SignOutBtn } from './SignOutBtn';
 
 export { default as TextExpander } from './TextExpander';
 
-export { default as SelectCountry } from './SelectCountry';
 export { default as ReservationCard } from './ReservationCard';
 export { default as DeleteReservation } from './DeleteReservation';
+
+// cabins
+export { default as CabinList } from './cabins/CabinList';
+export { default as CabinCard } from './cabins/CabinCard';
+export { default as CabinsFilter } from './cabins/CabinsFilter';
+
+// settings
+export { default as UpdateProfileForm } from './settings/UpdateProfileForm';
+export { default as SelectCountry } from './settings/SelectCountry';

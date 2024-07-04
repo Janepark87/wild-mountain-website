@@ -1,6 +1,6 @@
 // import { unstable_noStore as noStore } from 'next/cache';
 import { getCabins } from '@/src/services/apiCabins';
-import { CabinCard } from './';
+import { CabinCard } from '../';
 
 export default async function CabinList({ filter }) {
 	// noStore();

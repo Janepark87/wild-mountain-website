@@ -1,4 +1,4 @@
-import { getCountries } from '../services/apiSettings';
+import { getCountries } from '@/src/services/apiSettings';
 
 export default async function SelectCountry({
 	defaultCountry,
