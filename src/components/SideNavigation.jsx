@@ -1,8 +1,12 @@
+'use client';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { data } from '../constants';
 import { SignOutBtn } from './';
 
 export default function SideNavigation() {
+	const pathname = usePathname();
+
 	return (
 		<aside className="border-primary-900 border-r">
 			<nav className="h-full">
@@ -10,7 +14,7 @@ export default function SideNavigation() {
 					{data.sideNavLinks.map((link) => (
 						<li key={link.name}>
 							<Link
-								className={`hover:bg-primary-900 hover:text-primary-100 text-primary-200 flex items-center gap-4 px-5 py-3 font-semibold transition-colors`}
+								className={`hover:bg-primary-900 hover:text-primary-100 text-primary-200 flex items-center gap-4 px-5 py-3 font-semibold transition-colors ${pathname === link.href ? 'bg-primary-900' : ''}`}
 								href={link.href}>
 								{link.icon}
 								<span>{link.name}</span>
