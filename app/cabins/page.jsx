@@ -1,5 +1,9 @@
 import { Suspense } from 'react';
-import { CabinList, CabinsFilter } from '@/src/components';
+import {
+	CabinList,
+	CabinReservationReminder,
+	CabinsFilter,
+} from '@/src/components';
 import { Spinner } from '@/src/components';
 
 export const revalidate = 3600;
@@ -31,6 +35,7 @@ export default function Cabins({ searchParams }) {
 
 			<Suspense fallback={<Spinner />} key={filter}>
 				<CabinList filter={filter} />
+				<CabinReservationReminder />
 			</Suspense>
 		</div>
 	);

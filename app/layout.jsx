@@ -1,5 +1,6 @@
 import { josefin } from '@/src/styles/fonts';
 import '@/src/styles/globals.css';
+import { ReservationProvider } from '@/src/context/ReservationContext';
 import { Header } from '@/src/components';
 
 export const metadata = {
@@ -15,11 +16,13 @@ export default function RootLayout({ children }) {
 	return (
 		<html suppressHydrationWarning lang="en">
 			<body
-				className={`${josefin} text-primary-100 bg-primary-950 relative flex min-h-screen flex-col antialiased`}>
+				className={`${josefin} relative flex min-h-screen flex-col bg-primary-950 text-primary-100 antialiased`}>
 				<Header />
 
 				<main className="grid flex-1 overflow-x-hidden px-6 py-12">
-					<div className="mx-auto w-full max-w-7xl">{children}</div>
+					<div className="mx-auto w-full max-w-7xl">
+						<ReservationProvider>{children}</ReservationProvider>
+					</div>
 				</main>
 			</body>
 		</html>
