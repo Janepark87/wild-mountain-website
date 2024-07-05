@@ -6,19 +6,19 @@ export default function CabinDetail({ cabin }) {
 	const { name, maxCapacity, image, description } = cabin;
 
 	return (
-		<div className="mb-24 grid grid-cols-[3fr_4fr] gap-20 border border-primary-800 px-10 py-3">
-			<div className="relative -translate-x-3 scale-[1.15]">
+		<div className="mb-24 gap-20 border border-primary-800 lg:grid lg:grid-cols-[3fr_4fr]">
+			<div className="relative lg:-translate-x-3 lg:scale-[1.15]">
 				<Image
 					src={image}
 					fill
 					sizes="100%"
-					className="w-full rounded-lg object-cover"
+					className="!static max-h-[400px] w-full object-cover lg:!absolute lg:max-h-none lg:rounded-lg"
 					alt={`Cabin ${name}`}
 				/>
 			</div>
 
-			<div>
-				<h3 className="mb-5 w-[150%] translate-x-[-254px] rounded-lg bg-primary-950 p-6 pb-1 text-7xl font-black text-accent-100">
+			<div className="px-10 py-3">
+				<h3 className="mb-5 rounded-lg bg-primary-950 pt-8 text-5xl font-black text-accent-100 md:text-6xl lg:w-[150%] lg:translate-x-[-254px] lg:p-6 lg:pb-1 lg:text-7xl">
 					Cabin {name}
 				</h3>
 

@@ -17,18 +17,17 @@ export default async function Cabin({ params }) {
 	const cabin = await getCabin(params.cabinId);
 
 	return (
-		<div className="mx-auto mt-8 max-w-6xl">
-			<div>
-				<CabinDetail cabin={cabin} />
+		<div className="mx-auto max-w-6xl lg:mt-8">
+			<CabinDetail cabin={cabin} />
 
-				<h2 className="mb-10 text-center text-5xl font-semibold text-accent-400">
-					Reserve {cabin.name} today. Pay on arrival.
-				</h2>
+			<h2 className="mb-10 flex flex-col gap-1 text-center text-3xl font-semibold text-accent-400 sm:block sm:text-5xl">
+				<span>Reserve {cabin.name} today.</span>
+				<span class="sm:ml-3">Pay on arrival.</span>
+			</h2>
 
-				<Suspense fallback={<Spinner />}>
-					<CabinReservation cabin={cabin} />
-				</Suspense>
-			</div>
+			<Suspense fallback={<Spinner />}>
+				<CabinReservation cabin={cabin} />
+			</Suspense>
 		</div>
 	);
 }

@@ -7,7 +7,7 @@ export default function CabinReservationForm({ cabin }) {
 
 	return (
 		<div>
-			<div className="flex items-center justify-between bg-primary-800 px-8 py-2 text-primary-300 sm:px-16">
+			<div className="flex items-center justify-between bg-primary-800 px-4 py-2 text-primary-300 sm:px-16">
 				<p>Logged in as</p>
 
 				{/* <div className='flex gap-4 items-center'>
@@ -22,7 +22,7 @@ export default function CabinReservationForm({ cabin }) {
                 </div> */}
 			</div>
 
-			<form className="flex flex-col gap-5 bg-primary-900 px-8 py-10 text-lg sm:px-16">
+			<form className="flex flex-col gap-5 bg-primary-900 px-4 py-10 text-lg sm:px-16">
 				<div className="space-y-2">
 					<label htmlFor="numGuests">How many guests?</label>
 					<select
@@ -56,7 +56,7 @@ export default function CabinReservationForm({ cabin }) {
 					/>
 				</div>
 
-				<div className="flex items-center justify-end gap-6">
+				<div className="flex flex-col items-end justify-end gap-2 sm:flex-row sm:items-center sm:gap-6">
 					<p className="text-base text-primary-300">
 						Start by selecting dates
 					</p>

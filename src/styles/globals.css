@@ -56,8 +56,27 @@
 
 /* for data picker */
 .rdp {
-	--rdp-cell-size: 32px !important;
+	--rdp-cell-size: 36px !important;
 	--rdp-accent-color: theme('colors.accent.500') !important;
 	--rdp-background-color: theme('colors.accent.600') !important;
+	margin: auto !important;
+}
+
+.rdp-months {
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+.rdp-months > div {
 	margin: 0 !important;
+}
+
+@media screen and (min-width: 576px) {
+	.rdp {
+		--rdp-cell-size: 32px !important;
+	}
+
+	.rdp-months {
+		flex-direction: row;
+	}
 }

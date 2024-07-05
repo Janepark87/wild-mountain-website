@@ -27,9 +27,9 @@ export default function DateSelector({ cabin, settings, bookedDates }) {
 	const { minBookingLength, maxBookingLength } = settings;
 
 	return (
-		<div className="flex min-h-[400px] flex-col justify-between border border-primary-800 lg:border-r-0">
+		<div className="flex flex-col justify-between border border-primary-800 lg:border-r-0">
 			<DayPicker
-				className="flex w-full justify-center place-self-center pt-12"
+				className="flex w-full justify-center place-self-center px-4 py-12"
 				mode="range"
 				onSelect={setRange}
 				selected={range}
@@ -42,12 +42,12 @@ export default function DateSelector({ cabin, settings, bookedDates }) {
 				numberOfMonths={2}
 			/>
 
-			<div className="flex h-[72px] items-center justify-between bg-accent-500 px-8 text-primary-800 sm:px-16 lg:px-8">
-				<div className="flex items-baseline gap-6">
-					<p className="flex items-baseline gap-2">
+			<div className="flex h-[72px] items-center justify-between bg-accent-500 px-4 text-primary-800 sm:px-16 lg:px-8">
+				<div className="flex items-baseline gap-3 sm:gap-6">
+					<p className="flex items-center gap-2">
 						{discount > 0 ? (
 							<>
-								<span className="text-2xl">
+								<span className="text-lg sm:text-2xl">
 									${regularPrice - discount}
 								</span>
 								<span className="font-semibold text-primary-700 line-through">
@@ -55,20 +55,22 @@ export default function DateSelector({ cabin, settings, bookedDates }) {
 								</span>
 							</>
 						) : (
-							<span className="text-2xl">${regularPrice}</span>
+							<span className="text-lg sm:text-2xl">
+								${regularPrice}
+							</span>
 						)}
-						<span className="">/night</span>
+						<span>/night</span>
 					</p>
 					{numNights ? (
 						<>
-							<p className="bg-accent-600 px-3 py-2 text-2xl">
-								<span>&times;</span> <span>{numNights}</span>
+							<p className="rounded-md bg-accent-600 p-2 py-3 text-lg leading-none sm:text-2xl">
+								&times; {numNights}
 							</p>
 							<p>
-								<span className="text-lg font-bold uppercase">
+								<span className="text-md font-bold uppercase sm:text-lg">
 									Total
 								</span>{' '}
-								<span className="text-2xl font-semibold">
+								<span className="text-lg font-semibold lg:text-2xl">
 									${cabinPrice}
 								</span>
 							</p>
