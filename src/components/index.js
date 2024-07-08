@@ -4,6 +4,9 @@ export { default as Navigation } from './Navigation';
 export { default as SideNavigation } from './SideNavigation';
 export { default as Spinner } from './Spinner';
 
+export { default as UserAvatar } from './UserAvatar';
+export { default as LoginMessage } from './LoginMessage';
+
 export { default as SignInBtn } from './SignInBtn';
 export { default as SignOutBtn } from './SignOutBtn';
 

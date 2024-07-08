@@ -7,10 +7,16 @@ const nextConfig = {
 	images: {
 		remotePatterns: [
 			{
-				protocol: 'https',
+				protocol: process.env.PROTOCOL,
 				hostname: process.env.SUPABASE_HOSTNAME,
 				port: '',
 				pathname: process.env.SUPABSE_IMAGE_PATHNAEM,
+			},
+			{
+				protocol: process.env.PROTOCOL,
+				hostname: process.env.GOOGLE_IMAGE_HOSTNAME,
+				port: '',
+				pathname: '/**',
 			},
 		],
 	},

@@ -22,7 +22,7 @@ export default async function Cabin({ params }) {
 
 			<h2 className="mb-10 flex flex-col gap-1 text-center text-3xl font-semibold text-accent-400 sm:block sm:text-5xl">
 				<span>Reserve {cabin.name} today.</span>
-				<span class="sm:ml-3">Pay on arrival.</span>
+				<span className="sm:ml-3">Pay on arrival.</span>
 			</h2>
 
 			<Suspense fallback={<Spinner />}>

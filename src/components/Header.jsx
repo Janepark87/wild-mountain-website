@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { Logo, Navigation } from '.';
 
-export default function Header() {
+export default function Header({ session }) {
 	const [isSticky, setIsSticky] = useState(false);
 
 	const checkSticky = () => {
@@ -16,10 +16,10 @@ export default function Header() {
 
 	return (
 		<header
-			className={`border-primary-900 overflow-hidden border-b px-6 py-4 ${isSticky ? 'bg-primary-950 sticky top-0 z-50' : ''}`}>
+			className={`overflow-hidden border-b border-primary-900 px-6 py-4 ${isSticky ? 'sticky top-0 z-50 bg-primary-950' : ''}`}>
 			<div className="mx-auto flex max-w-7xl items-center justify-between gap-3">
 				<Logo />
-				<Navigation />
+				<Navigation session={session} />
 			</div>
 		</header>
 	);
