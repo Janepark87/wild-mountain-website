@@ -7,8 +7,8 @@ export default function SignInBtn() {
 			<button className="flex items-center gap-6 rounded-lg border border-primary-300 px-10 py-4 text-lg font-medium">
 				<Image
 					src="https://authjs.dev/img/providers/google.svg"
-					height="24"
-					width="24"
+					height={24}
+					width={24}
 					priority
 					alt="Google logo"
 				/>

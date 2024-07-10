@@ -6,8 +6,8 @@ export default function UserAvatar({ session }) {
 			src={session.user.image}
 			alt={session.user.name}
 			referrerPolicy="no-referrer"
-			width="30"
-			height="30"
+			width={30}
+			height={30}
 			className="!h-7 !w-7 rounded-full object-cover xs:!h-8 xs:!w-8"
 		/>
 	);

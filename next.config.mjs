@@ -18,6 +18,12 @@ const nextConfig = {
 				port: '',
 				pathname: '/**',
 			},
+			{
+				protocol: process.env.PROTOCOL,
+				hostname: process.env.COUNTRY_FLAG,
+				port: '',
+				pathname: '/**',
+			},
 		],
 	},
 	// output: 'export',
