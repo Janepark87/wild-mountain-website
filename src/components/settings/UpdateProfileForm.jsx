@@ -1,11 +1,9 @@
 'use client';
-import { useState } from 'react';
-import { updateGuestProfile } from '@/src/auth/actions';
 import Image from 'next/image';
+import { updateGuestProfile } from '@/src/auth/actions';
 import { ProfileSubmitBtn } from '..';
 
 export default function UpdateProfileForm({ guest, children }) {
-	const [count, setCount] = useState();
 	const { fullName, email, nationality, nationalID, countryFlag } = guest;
 
 	return (

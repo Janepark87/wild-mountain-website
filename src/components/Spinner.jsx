@@ -1,3 +1,4 @@
 export default function Spinner({ type }) {
-	return <div className={`spinner${type === 'sm' ? '-mini' : ''}`}></div>;
+	const spinnerClass = type === 'sm' ? 'spinner-mini' : 'spinner';
+	return <div className={spinnerClass}></div>;
 }

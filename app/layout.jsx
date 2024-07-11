@@ -1,8 +1,8 @@
+import '@/src/styles/globals.css';
 import { auth } from '@/src/auth/auth';
 import { Header } from '@/src/components';
 import { ReservationProvider } from '@/src/context/ReservationContext';
 import { josefin } from '@/src/styles/fonts';
-import '@/src/styles/globals.css';
 
 export const metadata = {
 	title: {
