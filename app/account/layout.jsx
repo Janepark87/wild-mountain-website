@@ -5,7 +5,7 @@ export default function AccountLayout({ children }) {
 		<div className="grid h-full grid-cols-[16rem_1fr] gap-12">
 			<SideNavigation />
 
-			<div className="py-1">{children}</div>
+			<section className="overflow-x-auto py-1">{children}</section>
 		</div>
 	);
 }

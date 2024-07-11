@@ -1,7 +1,9 @@
-import { PencilSquareIcon } from '@heroicons/react/24/solid';
+import Image from 'next/image';
 import { format, isPast, isToday } from 'date-fns';
+import { PencilSquareIcon } from '@heroicons/react/24/solid';
 import { formatDistanceFromNow } from '../utils/helper';
 import { DeleteReservation } from '.';
+import Link from 'next/link';
 
 export default function ReservationCard({ booking }) {
 	const {
@@ -18,12 +20,14 @@ export default function ReservationCard({ booking }) {
 	} = booking;
 
 	return (
-		<div className="border-primary-800 flex border">
+		<div className="flex overflow-hidden rounded-md border border-primary-800">
 			<div className="relative aspect-square h-32">
-				<img
+				<Image
 					src={image}
+					fill
+					sizes="100%"
 					alt={`Cabin ${name}`}
-					className="border-primary-800 border-r object-cover"
+					className="border-r border-primary-800 object-cover"
 				/>
 			</div>
 
@@ -33,17 +37,17 @@ export default function ReservationCard({ booking }) {
 						{numNights} nights in Cabin {name}
 					</h3>
 					{isPast(new Date(startDate)) ? (
-						<span className="flex h-7 items-center rounded-sm bg-yellow-800 px-3 text-xs font-bold uppercase text-yellow-200">
+						<span className="flex items-center rounded-sm bg-yellow-800 p-2 text-xs font-bold uppercase leading-none text-yellow-200">
 							past
 						</span>
 					) : (
-						<span className="flex h-7 items-center rounded-sm bg-green-800 px-3 text-xs font-bold uppercase text-green-200">
+						<span className="flex items-center rounded-sm bg-green-800 p-2 text-xs font-bold uppercase leading-none text-green-200">
 							upcoming
 						</span>
 					)}
 				</div>
 
-				<p className="text-primary-300 text-lg">
+				<p className="text-lg text-primary-300">
 					{format(new Date(startDate), 'EEE, MMM dd yyyy')} (
 					{isToday(new Date(startDate))
 						? 'Today'
@@ -52,28 +56,32 @@ export default function ReservationCard({ booking }) {
 				</p>
 
 				<div className="mt-auto flex items-baseline gap-5">
-					<p className="text-accent-400 text-xl font-semibold">
+					<p className="text-xl font-semibold text-accent-400">
 						${totalPrice}
 					</p>
 					<p className="text-primary-300">&bull;</p>
-					<p className="text-primary-300 text-lg">
+					<p className="text-lg text-primary-300">
 						{numGuests} guest{numGuests > 1 && 's'}
 					</p>
-					<p className="text-primary-400 ml-auto text-sm">
+					<p className="ml-auto text-sm text-primary-400">
 						Booked{' '}
 						{format(new Date(created_at), 'EEE, MMM dd yyyy, p')}
 					</p>
 				</div>
 			</div>
 
-			<div className="border-primary-800 flex w-[100px] flex-col border-l">
-				<a
-					href={`/account/reservations/edit/${id}`}
-					className="text-primary-300 border-primary-800 hover:bg-accent-600 hover:text-primary-900 group flex flex-grow items-center gap-2 border-b px-3 text-xs font-bold uppercase transition-colors">
-					<PencilSquareIcon className="text-primary-600 group-hover:text-primary-800 h-5 w-5 transition-colors" />
-					<span className="mt-1">Edit</span>
-				</a>
-				<DeleteReservation bookingId={id} />
+			<div className="flex w-[100px] flex-col border-l border-primary-800">
+				{!isPast(startDate) && (
+					<>
+						<Link
+							href={`/account/reservations/edit/${id}`}
+							className="group flex flex-grow items-center gap-1 border-b border-primary-800 px-3 text-xs font-bold uppercase text-primary-300 transition-colors hover:bg-accent-600 hover:text-primary-900">
+							<PencilSquareIcon className="h-4 w-4 text-primary-600 transition-colors group-hover:text-primary-800" />
+							<span className="mt-1">Edit</span>
+						</Link>
+						<DeleteReservation bookingId={id} />
+					</>
+				)}
 			</div>
 		</div>
 	);

@@ -1,24 +1,28 @@
+import { auth } from '@/src/auth/auth';
+import { getBookings } from '@/src/services/apiBookings';
 import { ReservationCard } from '@/src/components';
+import Link from 'next/link';
 
 export const metadata = {
 	title: 'Reservations',
 };
 
-export default function page() {
-	const bookings = [];
+export default async function page() {
+	const session = await auth();
+	const bookings = await getBookings(session.user.guestId);
 
 	return (
-		<div>
-			<h2 className="text-accent-400 mb-7 text-2xl font-semibold">
+		<div className="w-[60rem] pb-4 xl:w-full">
+			<h2 className="mb-7 text-2xl font-semibold text-accent-400">
 				Your reservations
 			</h2>
 
 			{bookings.length === 0 ? (
 				<p className="text-lg">
 					You have no reservations yet. Check out our{' '}
-					<a className="text-accent-500 underline" href="/cabins">
+					<Link className="text-accent-500 underline" href="/cabins">
 						luxury cabins &rarr;
-					</a>
+					</Link>
 				</p>
 			) : (
 				<ul className="space-y-6">
