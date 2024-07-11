@@ -28,3 +28,4 @@ export { default as CabinReservationReminder } from './cabins/CabinReservationRe
 // settings
 export { default as UpdateProfileForm } from './settings/UpdateProfileForm';
 export { default as SelectCountry } from './settings/SelectCountry';
+export { default as ProfileSubmitBtn } from './settings/ProfileSubmitBtn';

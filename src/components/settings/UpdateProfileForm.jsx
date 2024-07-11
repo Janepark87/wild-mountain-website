@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { updateGuestProfile } from '@/src/auth/actions';
 import Image from 'next/image';
+import { ProfileSubmitBtn } from '..';
 
 export default function UpdateProfileForm({ guest, children }) {
 	const [count, setCount] = useState();
@@ -61,7 +62,7 @@ export default function UpdateProfileForm({ guest, children }) {
 			</div>
 
 			<div className="flex items-center justify-end gap-6">
-				<button className="btn-primary py-4">Update profile</button>
+				<ProfileSubmitBtn />
 			</div>
 		</form>
 	);
