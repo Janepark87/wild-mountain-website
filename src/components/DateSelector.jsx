@@ -1,27 +1,19 @@
 'use client';
-import { isWithinInterval } from 'date-fns';
-import { DayPicker } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
+import { differenceInDays, isPast, isSameDay } from 'date-fns';
+import { DayPicker } from 'react-day-picker';
 import { useReservation } from '../context/ReservationContext';
-
-function isAlreadyBooked(range, datesArr) {
-	return (
-		range.from &&
-		range.to &&
-		datesArr.some((date) =>
-			isWithinInterval(date, { start: range.from, end: range.to })
-		)
-	);
-}
+import { formatCurrency, isAlreadyBooked } from '../utils/helper';
+import { XMarkIcon } from '@heroicons/react/24/solid';
 
 export default function DateSelector({ cabin, settings, bookedDates }) {
 	const { range, setRange, resetRange } = useReservation();
 
-	// CHANGE
-	const regularPrice = 23;
-	const discount = 23;
-	const numNights = 23;
-	const cabinPrice = 23;
+	const displayRange = isAlreadyBooked(range, bookedDates) ? {} : range;
+
+	const { regularPrice, discount } = cabin;
+	const numNights = differenceInDays(displayRange.to, displayRange.from);
+	const cabinPrice = numNights * (regularPrice - discount);
 
 	// SETTINGS
 	const { minBookingLength, maxBookingLength } = settings;
@@ -32,7 +24,7 @@ export default function DateSelector({ cabin, settings, bookedDates }) {
 				className="flex w-full justify-center place-self-center px-4 py-12"
 				mode="range"
 				onSelect={setRange}
-				selected={range}
+				selected={displayRange}
 				min={minBookingLength + 1}
 				max={maxBookingLength}
 				fromMonth={new Date()}
@@ -40,51 +32,58 @@ export default function DateSelector({ cabin, settings, bookedDates }) {
 				toYear={new Date().getFullYear() + 5}
 				captionLayout="dropdown"
 				numberOfMonths={2}
+				disabled={(curDate) =>
+					isPast(curDate) ||
+					bookedDates.some((data) => isSameDay(data, curDate))
+				}
 			/>
 
-			<div className="flex h-[72px] items-center justify-between bg-accent-500 px-4 text-primary-800 sm:px-16 lg:px-8">
-				<div className="flex items-baseline gap-3 sm:gap-6">
-					<p className="flex items-center gap-2">
-						{discount > 0 ? (
-							<>
-								<span className="text-lg sm:text-2xl">
-									${regularPrice - discount}
-								</span>
-								<span className="font-semibold text-primary-700 line-through">
-									${regularPrice}
-								</span>
-							</>
-						) : (
-							<span className="text-lg sm:text-2xl">
-								${regularPrice}
-							</span>
-						)}
-						<span>/night</span>
-					</p>
-					{numNights ? (
+			<div className="flex flex-col items-end justify-between gap-2 bg-accent-500 p-4 text-primary-800 xs:flex-row xs:items-center xs:gap-3 sm:px-16 lg:px-8">
+				<div className="flex items-center gap-1">
+					{discount > 0 ? (
 						<>
-							<p className="rounded-md bg-accent-600 p-2 py-3 text-lg leading-none sm:text-2xl">
-								&times; {numNights}
-							</p>
-							<p>
-								<span className="text-md font-bold uppercase sm:text-lg">
-									Total
-								</span>{' '}
-								<span className="text-lg font-semibold lg:text-2xl">
-									${cabinPrice}
-								</span>
-							</p>
+							<span className="xs:text-lg">
+								{formatCurrency(regularPrice - discount)}
+							</span>
+							<span className="ml-1 font-semibold text-primary-700 line-through">
+								{formatCurrency(regularPrice)}
+							</span>
 						</>
+					) : (
+						<span className="xs:text-lg">
+							{formatCurrency(regularPrice)}
+						</span>
+					)}
+					<span>/night</span>
+
+					{numNights > 0 ? (
+						<span className="ml-2 flex items-center gap-1 rounded-md bg-accent-600 p-2 leading-none">
+							<XMarkIcon className="w-3" />
+							<span>{numNights}</span>
+						</span>
 					) : null}
 				</div>
 
-				{range.from || range.to ? (
-					<button
-						className="border border-primary-800 px-4 py-2 text-sm font-semibold"
-						onClick={resetRange}>
-						Clear
-					</button>
-				) : null}
+				<div className="flex items-center justify-between gap-4">
+					{numNights > 0 ? (
+						<div className="flex items-center gap-1">
+							<span className="text-xs font-semibold uppercase xs:text-sm">
+								Total
+							</span>
+							<span className="font-semibold">
+								{formatCurrency(cabinPrice)}
+							</span>
+						</div>
+					) : null}
+
+					{range.from || range.to ? (
+						<button
+							className="rounded-md border border-primary-800 px-2 py-1 text-sm font-semibold xs:px-3 xs:py-2"
+							onClick={resetRange}>
+							Clear
+						</button>
+					) : null}
+				</div>
 			</div>
 		</div>
 	);

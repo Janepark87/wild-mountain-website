@@ -46,7 +46,6 @@ export default function UpdateProfileForm({ guest, children }) {
 					/>
 				</div>
 
-				{/* SelectCountry */}
 				{children}
 			</div>
 

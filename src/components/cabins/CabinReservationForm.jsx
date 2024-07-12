@@ -63,7 +63,7 @@ export default function CabinReservationForm({ cabin, user }) {
 						Start by selecting dates
 					</p>
 
-					<button className="btn-primary">Reserve now</button>
+					<button className="btn-primary py-4">Reserve now</button>
 				</div>
 			</form>
 		</div>
