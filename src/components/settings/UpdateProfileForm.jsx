@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import { updateGuestProfile } from '@/src/auth/actions';
-import { ProfileSubmitBtn } from '..';
+import { SubmitBtn } from '..';
 
 export default function UpdateProfileForm({ guest, children }) {
 	const { fullName, email, nationality, nationalID, countryFlag } = guest;
@@ -60,7 +60,7 @@ export default function UpdateProfileForm({ guest, children }) {
 			</div>
 
 			<div className="flex items-center justify-end gap-6">
-				<ProfileSubmitBtn />
+				<SubmitBtn>Update profile</SubmitBtn>
 			</div>
 		</form>
 	);

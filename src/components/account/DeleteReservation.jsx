@@ -1,8 +1,8 @@
 'use client';
 import { useTransition } from 'react';
 import { TrashIcon } from '@heroicons/react/24/solid';
-import { deleteReservation } from '../auth/actions';
-import { Spinner } from '.';
+import { deleteReservation } from '@/src/auth/actions';
+import { Spinner } from '..';
 
 export default function DeleteReservation({ bookingId }) {
 	const [isPending, startTransaction] = useTransition();

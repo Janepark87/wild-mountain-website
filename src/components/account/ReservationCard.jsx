@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import { format, isPast, isToday } from 'date-fns';
 import { PencilSquareIcon } from '@heroicons/react/24/solid';
-import { formatDistanceFromNow } from '../utils/helper';
-import { DeleteReservation } from '.';
+import { formatDistanceFromNow } from '../../utils/helper';
+import { DeleteReservation } from '..';
 import Link from 'next/link';
 
 export default function ReservationCard({ booking }) {
