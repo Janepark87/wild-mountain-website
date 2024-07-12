@@ -36,7 +36,7 @@ export default function UpdateProfileForm({ guest, children }) {
 					<Image
 						src={countryFlag}
 						width={30}
-						height={22}
+						height={20}
 						style={{
 							width: '30px',
 							height: '20px',

@@ -1,7 +1,7 @@
+import Link from 'next/link';
 import { auth } from '@/src/auth/auth';
 import { getBookings } from '@/src/services/apiBookings';
-import { ReservationCard } from '@/src/components';
-import Link from 'next/link';
+import { ReservationList } from '@/src/components';
 
 export const metadata = {
 	title: 'Reservations',
@@ -25,11 +25,7 @@ export default async function page() {
 					</Link>
 				</p>
 			) : (
-				<ul className="space-y-6">
-					{bookings.map((booking) => (
-						<ReservationCard booking={booking} key={booking.id} />
-					))}
-				</ul>
+				<ReservationList bookings={bookings} />
 			)}
 		</div>
 	);

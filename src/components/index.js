@@ -24,6 +24,7 @@ export { default as CabinReservationForm } from './cabins/CabinReservationForm';
 export { default as CabinReservationReminder } from './cabins/CabinReservationReminder';
 
 // account
+export { default as ReservationList } from './account/ReservationList';
 export { default as ReservationCard } from './account/ReservationCard';
 export { default as DeleteReservation } from './account/DeleteReservation';
 export { default as ReservationEditForm } from './account/ReservationEditForm';

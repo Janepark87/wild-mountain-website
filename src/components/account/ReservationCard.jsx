@@ -5,7 +5,7 @@ import { formatDistanceFromNow } from '../../utils/helper';
 import { DeleteReservation } from '..';
 import Link from 'next/link';
 
-export default function ReservationCard({ booking }) {
+export default function ReservationCard({ booking, onDelete }) {
 	const {
 		id,
 		guestId,
@@ -79,7 +79,7 @@ export default function ReservationCard({ booking }) {
 							<PencilSquareIcon className="h-4 w-4 text-primary-600 transition-colors group-hover:text-primary-800" />
 							<span className="mt-1">Edit</span>
 						</Link>
-						<DeleteReservation bookingId={id} />
+						<DeleteReservation bookingId={id} onDelete={onDelete} />
 					</>
 				)}
 			</div>
