@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { format, isPast, isToday } from 'date-fns';
 import { PencilSquareIcon } from '@heroicons/react/24/solid';
-import { formatDistanceFromNow } from '../../utils/helper';
+import { formatCurrency, formatDistanceFromNow } from '../../utils/helper';
 import { DeleteReservation } from '..';
 import Link from 'next/link';
 
@@ -57,7 +57,7 @@ export default function ReservationCard({ booking, onDelete }) {
 
 				<div className="mt-auto flex items-baseline gap-5">
 					<p className="text-xl font-semibold text-accent-400">
-						${totalPrice}
+						{formatCurrency(totalPrice)}
 					</p>
 					<p className="text-primary-300">&bull;</p>
 					<p className="text-lg text-primary-300">

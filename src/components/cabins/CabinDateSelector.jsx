@@ -2,11 +2,11 @@
 import 'react-day-picker/dist/style.css';
 import { differenceInDays, isPast, isSameDay } from 'date-fns';
 import { DayPicker } from 'react-day-picker';
-import { useReservation } from '../context/ReservationContext';
-import { formatCurrency, isAlreadyBooked } from '../utils/helper';
+import { useReservation } from '../../context/ReservationContext';
+import { formatCurrency, isAlreadyBooked } from '../../utils/helper';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 
-export default function DateSelector({ cabin, settings, bookedDates }) {
+export default function CabinDateSelector({ cabin, settings, bookedDates }) {
 	const { range, setRange, resetRange } = useReservation();
 
 	const displayRange = isAlreadyBooked(range, bookedDates) ? {} : range;

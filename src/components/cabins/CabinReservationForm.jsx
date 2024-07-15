@@ -1,10 +1,34 @@
 'use client';
 import Image from 'next/image';
 import { useReservation } from '@/src/context/ReservationContext';
+import { differenceInDays } from 'date-fns';
+import { createReservation } from '@/src/auth/actions';
+import { isAlreadyBooked } from '@/src/utils/helper';
+import { SubmitBtn } from '..';
 
-export default function CabinReservationForm({ cabin, user }) {
-	const { range, setRange, resetRange } = useReservation();
-	const { maxCapacity } = cabin;
+export default function CabinReservationForm({ cabin, user, bookedDates }) {
+	const { range, resetRange } = useReservation();
+	const { id, maxCapacity, regularPrice, discount } = cabin;
+
+	const displayRange = isAlreadyBooked(range, bookedDates) ? {} : range;
+
+	const startDate = range.from;
+	const endDate = range.to;
+	const numNights = differenceInDays(endDate, startDate);
+	const cabinPrice = numNights * (regularPrice - discount);
+
+	const reservationData = {
+		cabinId: id,
+		startDate,
+		endDate,
+		numNights,
+		cabinPrice,
+	};
+
+	const createReservationWithData = createReservation.bind(
+		null,
+		reservationData
+	);
 
 	return (
 		<div>
@@ -24,7 +48,12 @@ export default function CabinReservationForm({ cabin, user }) {
 				</div>
 			</div>
 
-			<form className="flex flex-col gap-5 bg-primary-900 px-4 py-10 text-lg sm:px-16">
+			<form
+				action={async (formData) => {
+					await createReservationWithData(formData);
+					resetRange();
+				}}
+				className="flex flex-col gap-5 bg-primary-900 px-4 py-10 text-lg sm:px-16">
 				<div className="space-y-2">
 					<label htmlFor="numGuests">How many guests?</label>
 					<select
@@ -62,8 +91,13 @@ export default function CabinReservationForm({ cabin, user }) {
 					<p className="text-base text-primary-300">
 						Start by selecting dates
 					</p>
-
-					<button className="btn-primary py-4">Reserve now</button>
+					<SubmitBtn
+						pendingLabel="Reserving"
+						disabledOption={
+							!(displayRange.to && displayRange.from)
+						}>
+						Reserve now
+					</SubmitBtn>
 				</div>
 			</form>
 		</div>
