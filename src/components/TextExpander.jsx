@@ -2,17 +2,20 @@
 
 import { useState } from 'react';
 
-export default function TextExpander({ children, classes }) {
+export default function TextExpander({ children, className }) {
 	const [isExpanded, setIsExpanded] = useState(false);
+
+	if (!children) return;
+
 	const displayText = isExpanded
 		? children
-		: children.split(' ').slice(0, 40).join(' ') + '...';
+		: children?.split(' ').slice(0, 40).join(' ') + '...';
 
 	return (
-		<div className={classes}>
-			<p className="text-primary-300 text-lg">{displayText}</p>
+		<div className={className}>
+			<p className="text-lg text-primary-300">{displayText}</p>
 			<button
-				className="text-primary-700 border-primary-700 border-b pb-1 leading-3"
+				className="border-b border-primary-700 pb-1 leading-3 text-primary-700"
 				onClick={() => setIsExpanded(!isExpanded)}>
 				{isExpanded ? 'Show less' : 'Show more'}
 			</button>

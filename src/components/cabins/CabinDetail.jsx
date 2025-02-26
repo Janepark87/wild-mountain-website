@@ -22,7 +22,7 @@ export default function CabinDetail({ cabin }) {
 					Cabin {name}
 				</h3>
 
-				<TextExpander classes="mb-10">{description}</TextExpander>
+				<TextExpander className="mb-10">{description}</TextExpander>
 
 				<ul className="mb-7 flex flex-col gap-4">
 					<li className="flex items-center gap-3">
